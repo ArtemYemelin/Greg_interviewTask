@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Hello World registration</title>
+    <link rel="stylesheet" media="screen" href="../static/css/main.css" th:href="@{/static/css/main.css}"/>
+</head>
+<body>
+<h3>Registration</h3>
+<div th:if="${errorMessage}" th:text="${errorMessage}">
+</div>
+<main>
+    <form th:action="@{/registration}" method="post">
+        <div><label> User Name : <input id="reg-username" type="text" name="username" required/> </label></div>
+        <div>
+            <label>
+                Password : <input id="reg-password" type="password" name="password" required>
+                <div class="strength-meter">
+                    <div class="strength-animation"></div>
+                    <span class="strength weak"></span>
+                    <span class="strength medium"></span>
+                    <span class="strength strong"></span>
+                </div>
+                <div id="fill">
+
+                </div>
+            </label>
+        </div>
+        <div><input type="submit" value="Sign In"/></div>
+    </form>
+</main>
+<!--<script th:inline="javascript">
+    function enteredSymbol() {
+    var val = document.getElementById("password").value;
+    var token = document.getElementsByName("_csrf")[0].value;
+        $.ajax({
+            type: "post",
+            data: {'password': val},
+            headers: {"_csrf": token},
+            url: "/validation",
+            success: function (data) {
+                alert(JSON.stringify(data))
+            },
+            error: function (e) {
+                alert(e)
+            }
+});
+}
+</script>-->
+
+<footer>
+    <script type="text/javascript" src="../static/js/registration.js" th:src="@{/static/js/registration.js}"></script>
+    <script type="text/javascript" src="../static/js/jquery-2.2.4.min.js" th:src="@{/static/js/jquery-2.2.4.min.js}"></script>
+</footer>
+</body>
+</html>

@@ -1,0 +1,129 @@
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+main {
+    max-width: 50%;
+    margin: 0 auto;
+    background: #eee;
+    height: 100%;
+    padding: 1em 2em;
+}
+
+.strength-meter {
+    margin-top: 1rem;
+    position: relative;
+}
+
+.strength-meter:before, .strength-meter:after {
+    content: ' ';
+    display: table;
+}
+
+.strength-meter:after {
+    clear: both;
+}
+
+.strength-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 2em;
+    height: 1rem;
+    z-index: 1;
+}
+
+.strength-animation:before {
+    content: '';
+    width: 0;
+    height: 0;
+
+    border-left: 1rem solid transparent;
+    border-bottom: 1rem solid rgba(256, 256, 256, 0.4);
+
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.strength-animation:after {
+    content: '';
+    width: 0;
+    height: 0;
+
+    border-top: 1rem solid rgba(256, 256, 256, 0.4);
+    border-right: 1rem solid transparent;
+
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    margin-left: 1rem;
+}
+
+@keyframes shine {
+    0%   {
+        left: 0;
+        margin-left: 0;
+    }
+    100% {
+        left: 100%;
+        margin-left: -2em;
+    }
+}
+
+.strength-animation {
+    animation: shine 2s ease infinite;
+}
+
+.strength {
+    float: left;
+    position: relative;
+    width: 30%;
+    font-size: 0px; line-height: 0%;
+    margin-left: 1rem;
+
+    border-top: 1rem solid #fff;
+    border-right: 1rem solid transparent;
+}
+
+.strength:before {
+    border-left: 1rem solid transparent;
+    border-bottom: 1rem solid #fff;
+    content: '';
+
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+}
+
+.weak {
+    border-top-color: #ea6d64;
+}
+
+.weak:before {
+    border-bottom-color: #ea6d64;
+}
+
+.medium {
+    border-top-color: #f4ba6f;
+}
+
+.medium:before {
+    border-bottom-color: #f4ba6f;
+}
+
+.strong {
+    border-top-color: #7fcb9f;
+}
+
+.strong:before {
+    border-bottom-color: #7fcb9f;
+}
